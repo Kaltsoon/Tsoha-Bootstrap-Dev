@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="App">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tietokantasovellus</title>
+
+    <!-- Bootstrap (stylesheet) -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Our stylesheets -->
+    <link href="assets/css/app.min.css" rel="stylesheet">
+
+    <!-- Angular -->
+    <script src="assets/vendor/angular.min.js"></script>
+
+    <!-- Angular route -->
+    <script src="assets/vendor/angular-route.js"></script>
+
+    <!-- Our app -->
+    <script src="assets/js/app.min.js"></script>
+  </head>
+  <!-- All other controllers share this controller -->
+  <body ng-controller="ApplicationController">
+
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <!-- Here's the name of your app -->
+          <a class="navbar-brand" href="#">{{name_of_the_app}}</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="#">Etusivu</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="main-container">
+      <!-- Dynamic content is displayed here -->
+      <div ng-view></div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery.min.js"></script>
+
+    <!-- Bootstrap (javascript) -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+  </body>
+</html>
