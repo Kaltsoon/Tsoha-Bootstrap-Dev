@@ -5,13 +5,38 @@
     public $name;
     public $age;
     public $gender;
+    public $friends;
 
     public function __construct($attributes){
       parent::__construct($attributes);
+
+      $this->validators = array('name', 'age');
     }
 
     public function introduce(){
-      return 'Hi, my names is ' . $this->name . ', I am a ' . $this->age . '-year-old ' . $this->gender . '. Nice to meet you!';
+      $elina = db::query('SELECT * FROM kayttaja WHERE kayttajatunnus = :kayttajatunnus')->with(array('kayttajatunnus' => 'elina'))->one();
+
+      return 'Hi, my names is ' . $elina['kayttajatunnus'] . ', I am a ' . $this->age . '-year-old ' . $this->gender . '. Nice to meet you!';
+    }
+
+    protected function name_validator($name){
+      $errors = array();
+
+      if($name == ''){
+        $errors[] = 'Nimi ei saa olla tyhjä!';
+      }
+
+      return $errors;
+    }
+
+    protected function age_validator($age){
+      $errors = array();
+
+      if($age < 18){
+        $errors[] = 'Et ole täysi-ikäinen!';
+      }
+
+      return $errors;
     }
 
   }

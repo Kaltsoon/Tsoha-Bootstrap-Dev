@@ -2,20 +2,27 @@
 
   class BaseModel{
 
-    function __construct($attributes){
+    protected $validators;
+
+    public function __construct($attributes){
+
       foreach($attributes as $attribute => $value){
         $this->{$attribute} = $value;
       }
     }
 
-    function to_json(){
-      $object = array();
+    public function validate(){
+      $errors = array();
 
       foreach($this as $attribute => $value){
-        $object[$attribute] = $value;
+        if(in_array($attribute, $this->validators)){
+            $attribute_errors = $this->{$attribute . '_validator'}($value);
+
+            $errors = array_merge($errors, $attribute_errors);
+        }
       }
 
-      return $object;
+      return $errors;
     }
 
   }

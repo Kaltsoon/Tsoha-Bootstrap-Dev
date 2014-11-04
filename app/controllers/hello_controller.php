@@ -5,11 +5,17 @@
     public static function me(){
       $me = new Person(array(
                         'name' => 'Kalle',
-                        'age' => 21,
+                        'age' => 18,
                         'gender' => 'male'
                       ));
 
-      self::render_json(array( 'introduction' => $me->introduce() ));
+      $errors = $me->validate();
+
+      if(count($errors) == 0){
+        self::render_json(array('introduction' => $me->introduce()));
+      }else{
+        self::render_status(400, array('errors' => $errors));
+      }
     }
 
     public static function my_friend(){
@@ -32,12 +38,11 @@
       $elina = new Person(array(
                               'name' => 'Elina',
                               'age' => 23,
-                              'gender' => 'female'
+                              'gender' => 'female',
+                              'friends' => array($henri)
                           ));
 
-      $my_gang = array($elina, $henri);
-
-      self::render_json($my_gang);
+      self::render_json(array($elina, $henri));
     }
 
   }

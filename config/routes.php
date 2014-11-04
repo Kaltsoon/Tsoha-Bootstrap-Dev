@@ -3,7 +3,7 @@
   // Set up our router
   $app = new \Slim\Slim();
 
-  // Don't touch this route unless you know that you're doing!
+  // Don't touch these routes unless you know that you're doing!
   $app->get('/', function() {
     require 'app/views/main.html';
   });
