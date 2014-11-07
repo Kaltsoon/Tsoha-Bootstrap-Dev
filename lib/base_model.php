@@ -14,12 +14,11 @@
     public function validate(){
       $errors = array();
 
-      foreach($this as $attribute => $value){
-        if(in_array($attribute, $this->validators)){
-            $attribute_errors = $this->{$attribute . '_validator'}($value);
+      foreach($this->validators as $key => $value){
+        $attribute = $this->{$key};
+        $attribute_errors = $this->{$value}($attribute);
 
-            $errors = array_merge($errors, $attribute_errors);
-        }
+        $errors = array_merge($errors, $attribute_errors);
       }
 
       return $errors;

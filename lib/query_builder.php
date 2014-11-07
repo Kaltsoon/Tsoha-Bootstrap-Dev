@@ -8,7 +8,7 @@
 
     public function __construct($query){
       $this->query = $query;
-      $this->connection = db::connection();
+      $this->connection = DB::connection();
     }
 
     public function with($attributes){

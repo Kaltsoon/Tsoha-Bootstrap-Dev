@@ -3,7 +3,7 @@
   require 'config/database.php';
   require 'lib/query_builder.php';
 
-  class db{
+  class DB{
 
       public static function connection(){
         $config = DatabaseConfig::connection_config();
