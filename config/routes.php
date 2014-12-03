@@ -1,18 +1,11 @@
 <?php
 
-  // Set up our router
+  // Alustetaan Slim
   $app = new \Slim\Slim();
 
-  // Don't touch these routes unless you know that you're doing!
   $app->get('/', function() {
-    require 'app/views/main.html';
+    HelloController::index();
   });
-
-  /***************************************
-  * WRITE THE ENDPOINTS OF YOUR API HERE *
-  ****************************************/
-
-  // Here's a demo
 
   $app->get('/me', function(){
     HelloController::me();
@@ -26,24 +19,7 @@
     HelloController::my_gang();
   });
 
-  // Here's some examples
-
-  /*
-  * $app->get('/dog', function(){
-  *   DogsController::index();
-  * });
-  *
-  * $app->get('/dog/:id', function($id){
-  *   DogsController::show($id);
-  * });
-  *
-  * $app->post('/dog', function(){
-  *   DogsController::create();
-  * });
-  *
-  */
-
-  // Run the router
+  // Käynnistetään reititin
   $app->run();
 
 ?>

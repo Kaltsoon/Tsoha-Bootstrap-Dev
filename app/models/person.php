@@ -10,13 +10,16 @@
     public function __construct($attributes){
       parent::__construct($attributes);
 
-      $this->validators = array('name' => 'name_validator', 'age' => 'age_validator');
+      $this->validate(
+        array(
+          'name' => 'name_validator',
+          'age' => 'age_validator'
+        )
+      );
     }
 
     public function introduce(){
-      $elina = DB::query('SELECT * FROM kayttaja WHERE kayttajatunnus = :kayttajatunnus')->with(array('kayttajatunnus' => 'elina'))->one();
-
-      return 'Hi, my names is ' . $elina['kayttajatunnus'] . ', I am a ' . $this->age . '-year-old ' . $this->gender . '. Nice to meet you!';
+      return 'Hi, my names is ' . $this->name . ', I am a ' . $this->age . '-year-old ' . $this->gender . '. Nice to meet you!';
     }
 
     protected function name_validator($name){

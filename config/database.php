@@ -2,15 +2,15 @@
 
   class DatabaseConfig{
 
-    // Choose which database to use (mysql or psql)
+    // Valitse käytettävä tietokanta (psql tai mysql)
     private static $use_database = 'psql';
 
-    // Set correct variables for the connection
+    // Jos käytät MySQL-tietokantaa, aseta oikeat arvot "MUUTA" kohtiin
     private static $connection_config = array(
       'mysql' => array(
-                  'resource' => 'mysql:unix_socket=/home/CHANGE/mysql/socket;dbname=CHANGE',
+                  'resource' => 'mysql:unix_socket=/home/MUUTA/mysql/socket;dbname=MUUTA',
                   'username' => 'root',
-                  'password' => 'CHANGE'
+                  'password' => 'MUUTA'
                 ),
       'psql' => array(
                   'resource' => 'pgsql:'

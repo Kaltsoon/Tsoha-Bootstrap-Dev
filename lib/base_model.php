@@ -7,18 +7,26 @@
     public function __construct($attributes){
 
       foreach($attributes as $attribute => $value){
-        $this->{$attribute} = $value;
+        if(property_exists($this, $attribute)){
+          $this->{$attribute} = $value;
+        }
       }
     }
 
-    public function validate(){
+    public function validate($arr){
+      $this->validators = $arr;
+    }
+
+    public function errors(){
       $errors = array();
 
       foreach($this->validators as $key => $value){
-        $attribute = $this->{$key};
-        $attribute_errors = $this->{$value}($attribute);
+        if(method_exists($this, $value)){
+          $attribute = $this->{$key};
+          $attribute_errors = $this->{$value}($attribute);
 
-        $errors = array_merge($errors, $attribute_errors);
+          $errors = array_merge($errors, $attribute_errors);
+        }
       }
 
       return $errors;

@@ -2,20 +2,17 @@
 
   class HelloController extends BaseController{
 
-    public static function me(){
+    public static function index(){
       $me = new Person(array(
-                        'name' => 'Kalle',
-                        'age' => 18,
-                        'gender' => 'male'
-                      ));
+        'name' => 'Kalle',
+        'age' => 18,
+        'gender' => 'male'
+      ));
 
-      $errors = $me->validate();
+      self::render_view('home.html');
+    }
 
-      if(count($errors) == 0){
-        self::render_json(array('introduction' => $me->introduce()));
-      }else{
-        self::render_status(400, array('errors' => $errors));
-      }
+    public static function me(){
     }
 
     public static function my_friend(){
