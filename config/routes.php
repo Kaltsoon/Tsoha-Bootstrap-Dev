@@ -1,25 +1,17 @@
 <?php
 
-  // Alustetaan Slim
-  $app = new \Slim\Slim();
-
   $app->get('/', function() {
-    HelloController::index();
+    GameController::index();
   });
 
-  $app->get('/me', function(){
-    HelloController::me();
+  $app->get('/game/create', function() {
+    GameController::create();
   });
 
-  $app->get('/my-friend', function(){
-    HelloController::my_friend();
+  $app->post('/game', function() {
+    GameController::store();
   });
 
-  $app->get('/my-gang', function(){
-    HelloController::my_gang();
+  $app->get('/hiekkalaatikko', function() {
+    HelloWorldController::sandbox();
   });
-
-  // Käynnistetään reititin
-  $app->run();
-
-?>

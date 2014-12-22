@@ -1,5 +1,4 @@
 <?php
-
   require 'lib/database.php';
 
   require 'lib/base_model.php';
@@ -17,6 +16,12 @@
   require 'vendor/Slim/Slim.php';
   \Slim\Slim::registerAutoloader();
 
+  $app = new \Slim\Slim();
+
+  $app->get('/tietokantayhteys', function(){
+    DB::test_connection();
+  });
+
   require 'config/routes.php';
 
-?>
+  $app->run();

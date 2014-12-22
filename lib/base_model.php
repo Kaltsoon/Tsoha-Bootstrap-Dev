@@ -4,7 +4,7 @@
 
     protected $validators;
 
-    public function __construct($attributes){
+    public function __construct($attributes = null){
 
       foreach($attributes as $attribute => $value){
         if(property_exists($this, $attribute)){
@@ -33,5 +33,3 @@
     }
 
   }
-
-?>
