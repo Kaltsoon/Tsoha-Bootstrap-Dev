@@ -1,2 +1,1 @@
-DROP TABLE IF EXISTS Game;
-DROP TABLE IF EXISTS Player;
+-- Lisää DROP TABLE lauseet tähän tiedostoon

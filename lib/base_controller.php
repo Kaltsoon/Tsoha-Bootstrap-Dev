@@ -1,7 +1,5 @@
 <?php
 
-  require 'vendor/Twig/lib/Twig/Autoloader.php';
-
   class BaseController{
 
     public static function get_user_logged_in(){
@@ -11,16 +9,6 @@
 
     public static function check_logged_in(){
       // Toteuta kirjautumisen tarkistus tähän
-    }
-
-    public static function render_status($status_code, $message = null){
-      if(!is_null($message)){
-        echo $message;
-      }
-
-      http_response_code($status_code);
-
-      exit();
     }
 
     public static function render_view($view, $content = array()){
@@ -60,8 +48,6 @@
         $_SESSION['flash_message'] = json_encode($message);
       }
 
-
-
       header('Location: ' . self::base_path() . $location);
 
       exit();
@@ -74,7 +60,7 @@
       exit();
     }
 
-    private static function base_path(){
+    public static function base_path(){
       $script_name = $_SERVER['SCRIPT_NAME'];
       $explode =  explode('/', $script_name);
 

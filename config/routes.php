@@ -1,15 +1,7 @@
 <?php
 
   $app->get('/', function() {
-    GameController::index();
-  });
-
-  $app->get('/game/create', function() {
-    GameController::create();
-  });
-
-  $app->post('/game', function() {
-    GameController::store();
+    HelloWorldController::index();
   });
 
   $app->get('/hiekkalaatikko', function() {

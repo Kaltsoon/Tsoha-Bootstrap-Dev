@@ -3,10 +3,11 @@
   class HelloWorldController extends BaseController{
 
     public static function index(){
-   	  echo 'Tämä on etusivu';
+   	  self::render_view('home.html');
     }
 
     public static function sandbox(){
-      print_r(Game::find(1));
+      // Testaa koodiasi täällä	
+      echo 'Hello World!';
     }
   }
