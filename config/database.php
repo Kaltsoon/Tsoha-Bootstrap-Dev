@@ -2,25 +2,28 @@
 
   class DatabaseConfig{
 
-    // Valitse käytettävä tietokanta (psql tai mysql)
-    private static $use_database = 'psql';
+    // Valitse käyttöympäristö (xampp tai users). Vaihda ympäristö users:iin, kun siirrät sovelluksen palvelimelle
+    private static $environment = 'xampp';
 
-    // Jos käytät MySQL-tietokantaa, aseta oikeat arvot KAYTTAJATUNNUS-kohtaan (käyttäjätunnuksesi) ja SALASANA-kohtaan (tietokantasi pääkäyttäjän salasana)
+    // Muuta users-ympäristöä asettamalle oikeat arvot KAYTTAJATUNNUS-kohtaan (käyttäjätunnuksesi)
+    // ja SALASANA-kohtaan (tietokantasi pääkäyttäjän salasana)
     private static $connection_config = array(
-      'mysql' => array(
+      'xampp' => array(
+          'resource' => 'mysql:localhost;dbname=test',
+          'username' => 'mysql',
+          'password' => null
+      ),
+      'users' => array(
         'resource' => 'mysql:unix_socket=/home/KAYTTAJATUNNUS/mysql/socket;dbname=test',
         'username' => 'root',
         'password' => 'SALASANA'
-      ),
-      'psql' => array(
-        'resource' => 'pgsql:'
       )
     );
 
     public static function connection_config(){
       $config = array(
-        'db' => self::$use_database,
-        'config' => self::$connection_config[self::$use_database]
+        'db' => 'mysql',
+        'config' => self::$connection_config[self::$environment]
       );
 
       return $config;
